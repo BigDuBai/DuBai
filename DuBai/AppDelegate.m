@@ -25,21 +25,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    DDMenuController *ddmenu = [mainStoryBoard instantiateViewControllerWithIdentifier:@"DDMenuController"];
     LeftViewController *left = [mainStoryBoard instantiateViewControllerWithIdentifier:@"LeftViewController"];
     RightViewController *right = [mainStoryBoard instantiateViewControllerWithIdentifier:@"RightViewController"];
-    
-//    ddmenu.rightViewController = right;
-//    ddmenu.leftViewController = left;
-//    ddmenu.rootViewController = master;
     
     [SliderViewController sharedSliderController].LeftVC=left;
     [SliderViewController sharedSliderController].RightVC=right;
     [SliderViewController sharedSliderController].RightSContentOffset=260;
-    [SliderViewController sharedSliderController].RightSContentScale=0.6;
+    [SliderViewController sharedSliderController].RightSContentScale=0.95;
     [SliderViewController sharedSliderController].RightSOpenDuration=0.8;
     [SliderViewController sharedSliderController].RightSCloseDuration=0.8;
     [SliderViewController sharedSliderController].RightSJudgeOffset=160;
+    
+    
+    [SliderViewController sharedSliderController].LeftSContentOffset=260;
+    [SliderViewController sharedSliderController].LeftSContentScale=0.95;
+    [SliderViewController sharedSliderController].LeftSOpenDuration=0.8;
+    [SliderViewController sharedSliderController].LeftSCloseDuration=0.8;
+    [SliderViewController sharedSliderController].LeftSJudgeOffset=160;
     
     self.window.rootViewController = self.window.rootViewController = [[BaseNavigationViewController alloc] initWithRootViewController:[SliderViewController sharedSliderController]];;
     

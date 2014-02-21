@@ -92,7 +92,8 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
     
     _tapGestureRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSideBar)];
     _tapGestureRec.delegate=self;
-    [self.view addGestureRecognizer:_tapGestureRec];
+//    [self.view addGestureRecognizer:_tapGestureRec];
+    [_mainContentView addGestureRecognizer:_tapGestureRec];
     _tapGestureRec.enabled = NO;
     
     _panGestureRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveViewWithGesture:)];
@@ -330,7 +331,8 @@ typedef NS_ENUM(NSInteger, RMoveDirection) {
     
     _mainContentView.layer.shadowOffset = CGSizeMake(shadowW, 1.0);
     _mainContentView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _mainContentView.layer.shadowOpacity = 0.8f;
+    _mainContentView.layer.shadowOpacity = 0.4f;
+    _mainContentView.layer.shadowPath = [[UIBezierPath bezierPathWithRect:_mainContentView.bounds] CGPath];
 }
 
 

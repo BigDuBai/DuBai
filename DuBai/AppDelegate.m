@@ -15,12 +15,13 @@
 #import "SliderViewController.h"
 #import "BaseNavigationViewController.h"
 
+#import "WYDatabase.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -43,16 +44,40 @@
     [SliderViewController sharedSliderController].LeftSCloseDuration=0.8;
     [SliderViewController sharedSliderController].LeftSJudgeOffset=160;
     
-    self.window.rootViewController = self.window.rootViewController = [[BaseNavigationViewController alloc] initWithRootViewController:[SliderViewController sharedSliderController]];;
+    self.window.rootViewController = [[BaseNavigationViewController alloc] initWithRootViewController:[SliderViewController sharedSliderController]];;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    WYDatabase *db = [WYDatabase shareInstance];
+    [db createTableWithSql:@"create table if not exists 'values' ('value' blob, 'key' TEXT);"];
     
     return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+    
+    
+    
+    /*
+     
+     NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
+     for (int i = 0; i<count; i++) {
+     // 替换为中等尺寸图片
+     NSString *url = [_urls[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+     MJPhoto *photo = [[MJPhoto alloc] init];
+     photo.url = [NSURL URLWithString:url]; // 图片路径
+     [photos addObject:photo];
+     }
+     
+     // 2.显示相册
+     MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+     browser.currentPhotoIndex = tap.view.tag; // 弹出相册时显示的第一张图片是？
+     browser.photos = photos; // 设置所有的图片
+     [browser show];
+     
+     */
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }

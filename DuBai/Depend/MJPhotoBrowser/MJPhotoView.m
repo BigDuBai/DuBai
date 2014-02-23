@@ -70,8 +70,8 @@
         
         // 不是gif，就马上开始下载
         if (![_photo.url.absoluteString hasSuffix:@"gif"]) {
-            __unsafe_unretained MJPhotoView *photoView = self;
-            __unsafe_unretained MJPhoto *photo = _photo;
+            __weak MJPhotoView *photoView = self;
+            __weak MJPhoto *photo = _photo;
             [_imageView setImageWithURL:_photo.url placeholderImage:_photo.placeholder options:SDWebImageRetryFailed|SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 photo.image = image;
                 
@@ -99,8 +99,8 @@
         [_photoLoadingView showLoading];
         [self addSubview:_photoLoadingView];
         
-        __unsafe_unretained MJPhotoView *photoView = self;
-        __unsafe_unretained MJPhotoLoadingView *loading = _photoLoadingView;
+        __weak MJPhotoView *photoView = self;
+        __weak MJPhotoLoadingView *loading = _photoLoadingView;
         [_imageView setImageWithURL:_photo.url placeholderImage:_photo.srcImageView.image options:SDWebImageRetryFailed|SDWebImageLowPriority progress:^(NSUInteger receivedSize, long long expectedSize) {
             if (receivedSize > kMinProgress) {
                 loading.progress = (float)receivedSize/expectedSize;
@@ -146,10 +146,12 @@
 	
 	// 设置伸缩比例
     CGFloat minScale = boundsWidth / imageWidth;
-	if (minScale > 1) {
-		minScale = 1.0;
-	}
-	CGFloat maxScale = 2.0; 
+    
+    minScale = MIN(minScale, 1.0);
+//	if (minScale > 1) {
+//		minScale = 1.0;
+//	}
+	CGFloat maxScale = 2.0;
 	if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
 		maxScale = maxScale / [[UIScreen mainScreen] scale];
 	}

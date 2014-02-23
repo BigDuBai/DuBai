@@ -6,7 +6,6 @@
 //
 
 #import "MJPhotoLoadingView.h"
-#import "MJPhotoBrowser.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MJPhotoProgressView.h"
 

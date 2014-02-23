@@ -9,9 +9,6 @@
 
 #define kMinProgress 0.0001
 
-@class MJPhotoBrowser;
-@class MJPhoto;
-
 @interface MJPhotoLoadingView : UIView
 @property (nonatomic) float progress;
 

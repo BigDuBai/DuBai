@@ -10,9 +10,12 @@
 
 @interface SliderViewController : UIViewController
 
-@property(nonatomic,strong)UIViewController *LeftVC;
-@property(nonatomic,strong)UIViewController *RightVC;
-@property(nonatomic,strong)UIViewController *MainVC;
+
+
+
+@property(nonatomic,strong) UIViewController *LeftVC;
+@property(nonatomic,strong) UIViewController *RightVC;
+@property(nonatomic,strong) UIViewController *MainVC;
 
 @property(nonatomic,assign)float LeftSContentOffset;
 @property(nonatomic,assign)float RightSContentOffset;

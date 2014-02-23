@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MJPhotoBrowser, MJPhoto, MJPhotoView;
+@class  MJPhoto, MJPhotoView;
 
 @protocol MJPhotoViewDelegate <NSObject>
 - (void)photoViewImageFinishLoad:(MJPhotoView *)photoView;
